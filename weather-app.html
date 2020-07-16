@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/>
+    <script data-ad-client="ca-pub-4512141567746855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <title>TechZone</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700"
+          rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--[if IE 6]>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body onload="displayDate(), displayGreetingMessage()">
+<div id="header-wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="index.html"><img src="images/logo.png" width="64" height="64" alt=""/>TechZone</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html" accesskey="1" title="">Home</a></li>
+                <li class="active"><a href="tutorials-page.html" accesskey="2" title="">Tutorials</a></li>
+                <li><a href="about-us.html" accesskey="3" title="">About Us</a></li>
+                <li><a href="contact-us.html" accesskey="4" title="">Contact</a></li>
+                <li><a href="blogs.html" accesskey="4" title="">Blogs</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="page-wrapper">
+    <div id="page" class="container">
+        <div id="content">
+            <header style="text-align: center; font-weight: bold;">How to create Weather App using Android Studio&nbsp;&nbsp;
+            </header>
+            <div style="text-align: center">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/qtlFIlNvDdk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h2>Step 1:</h2><br>
+          <p>Create a new Drawable file -> Right Click on <b>Drawable Folder</b> -> <b>New</b> -> <b>Drawable Resource
+                File</b><br>
+                File Name: <b>gradient.xml&nbsp;</b><br>
+                Root Element: <b>shape</b>
+                <br>
+			  <img style="margin-left: auto; margin-right: auto; display: block;" src="images/weather-app-gradient.png" alt="step1" width="100%" height="100%"/>
+			  <br>
+            <p> Copy and paste below code. This will create a gradient which we will use as a background for our app.&nbsp; </p>
+
+          <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;rotate xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     android:fromDegrees="270"</code>
+<code>     android:toDegrees="270"></code>
+<code>     &lt;shape</code>
+<code>         android:innerRadiusRatio="2.5"</code>
+<code>         android:shape="ring"</code>
+<code>         android:thickness="8dp"</code>
+<code>         android:useLevel="true"></code>
+<code> </code>
+<code>     &lt;gradient</code>
+<code>         android:angle="0"</code>
+<code>         android:endColor="#009688"</code>
+<code>         android:startColor="#009688"</code>
+<code>         android:type="sweep"</code>
+<code>         android:useLevel="false"/></code>
+<code> </code>
+<code>     &lt;/shape></code>
+<code> &lt;/rotate></code>
+</pre>
+          </div>
+            <br>
+
+            <h2>Step 2:</h2><br>
+            <p>Now go to <strong>activity_main.xml </strong>file and paste below code.<br />
+              This will create textboxex for displaying city, weather icon, temperature, humidity, pressure, details and updated time fields.<br />
+          <b><i>File : activity_main.xml</i></b></p>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     android:layout_width="match_parent"</code>
+<code>     android:layout_height="match_parent"</code>
+<code>     android:background="@drawable/gradient"</code>
+<code>     android:padding="20dp"</code>
+<code>     xmlns:tools="http://schemas.android.com/tools"</code>
+<code>     tools:context=".MainActivity"></code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/city_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_alignParentTop="true"</code>
+<code>         android:layout_centerHorizontal="true"</code>
+<code>         android:layout_marginTop="40dp"</code>
+<code>         android:textColor="#FFFFFF"</code>
+<code>         android:textSize="28sp" /></code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/weather_icon"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_above="@+id/current_temperature_field"</code>
+<code>         android:layout_centerHorizontal="true"</code>
+<code>         android:textColor="#FFFFFF"</code>
+<code>         android:textSize="90sp" /></code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/current_temperature_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_centerInParent="true"</code>
+<code>         android:textColor="#FFFFFF"</code>
+<code>         android:textSize="72sp" /></code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/humidity_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_below="@+id/current_temperature_field"</code>
+<code>         android:layout_centerHorizontal="true"</code>
+<code>         android:textColor="#FFFFFF"</code>
+<code> </code>
+<code>         /></code>
+<code> </code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/pressure_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_below="@+id/humidity_field"</code>
+<code>         android:layout_centerInParent="true"</code>
+<code>         android:textColor="#FFFFFF" /></code>
+<code> </code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/details_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_below="@+id/pressure_field"</code>
+<code>         android:layout_centerHorizontal="true"</code>
+<code>         android:textColor="#FFFFFF" /></code>
+<code> </code>
+<code>     &lt;TextView</code>
+<code>         android:id="@+id/updated_field"</code>
+<code>         android:layout_width="wrap_content"</code>
+<code>         android:layout_height="wrap_content"</code>
+<code>         android:layout_alignParentBottom="true"</code>
+<code>         android:layout_centerHorizontal="true"</code>
+<code>         android:textColor="#FFFFFF"</code>
+<code>         android:textSize="13sp" /></code>
+<code> </code>
+<code> </code>
+<code> &lt;/RelativeLayout></code>
+</pre>
+</div>
+<br>
+            <h2>Step 3:</h2><br>
+            <p>Go to <b>AndroidManifest.xml</b> and add below permissions for accessing Internet and user location. <br>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code>     &lt;uses-permission android:name="android.permission.INTERNET"/></code>
+<code>     &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /></code>
+<code>     &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /></code>
+</pre>
+</div>
+<br>
+
+		Final code will look like this.
+		
+		<div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     package="com.rahul.chauhan.weatherapp"></code>
+<code> </code>
+<code>     &lt;uses-permission android:name="android.permission.INTERNET"/></code>
+<code>     &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /></code>
+<code>     &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /></code>
+<code> </code>
+<code>     &lt;application</code>
+<code>         android:allowBackup="true"</code>
+<code>         android:icon="@mipmap/ic_launcher"</code>
+<code>         android:label="@string/app_name"</code>
+<code>         android:roundIcon="@mipmap/ic_launcher_round"</code>
+<code>         android:supportsRtl="true"</code>
+<code>         android:theme="@style/FullscreenTheme"</code>
+<code>         android:usesCleartextTraffic="true"></code>
+<code>         &lt;activity android:name=".MainActivity"></code>
+<code>             &lt;intent-filter></code>
+<code>                 &lt;action android:name="android.intent.action.MAIN" /></code>
+<code> </code>
+<code>                 &lt;category android:name="android.intent.category.LAUNCHER" /></code>
+<code>             &lt;/intent-filter></code>
+<code>         &lt;/activity></code>
+<code>     &lt;/application></code>
+<code> </code>
+<code> &lt;/manifest></code>
+</pre>
+</div>
+<br>
+            <h2>Step 4:</h2><br>
+            <p>Now go to <b>MainActivity.java</b> and paste below code for making progress bar work.<br>
+           <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> package com.rahul.chauhan.weatherapp;</code>
+<code> </code>
+<code> import androidx.appcompat.app.AppCompatActivity;</code>
+<code> import androidx.core.app.ActivityCompat;</code>
+<code> import android.os.Bundle;</code>
+<code> import android.content.pm.PackageManager;</code>
+<code> import android.graphics.Typeface;</code>
+<code> import android.location.Location;</code>
+<code> import android.os.StrictMode;</code>
+<code> import android.text.Html;</code>
+<code> import android.util.Log;</code>
+<code> import android.view.WindowManager;</code>
+<code> import android.widget.TextView;</code>
+<code> import com.google.android.gms.location.FusedLocationProviderClient;</code>
+<code> import com.google.android.gms.location.LocationServices;</code>
+<code> import com.google.android.gms.tasks.OnSuccessListener;</code>
+<code> import org.json.JSONException;</code>
+<code> import org.json.JSONObject;</code>
+<code> import java.io.BufferedReader;</code>
+<code> import java.io.InputStreamReader;</code>
+<code> import java.net.HttpURLConnection;</code>
+<code> import java.net.URL;</code>
+<code> import java.text.DateFormat;</code>
+<code> import java.util.Date;</code>
+<code> import java.util.Locale;</code>
+<code> import static android.Manifest.permission.ACCESS_FINE_LOCATION;</code>
+<code> </code>
+<code> public class MainActivity extends AppCompatActivity {</code>
+<code> </code>
+<code>     private static final String OPEN_WEATHER_MAP_URL = "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=metric";</code>
+<code>     private static final String OPEN_WEATHER_MAP_API = "06e28d2e957905b4ccf827111543253a";</code>
+<code> </code>
+<code>     TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;</code>
+<code>     Typeface weatherFont;</code>
+<code>     static String latitude;</code>
+<code>     static String longitude;</code>
+<code> </code>
+<code>     @Override</code>
+<code>     protected void onCreate(Bundle savedInstanceState) {</code>
+<code>         super.onCreate(savedInstanceState);</code>
+<code>         getSupportActionBar().hide();</code>
+<code>         setContentView(R.layout.activity_main);</code>
+<code> </code>
+<code>         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);</code>
+<code>         getSupportActionBar().hide();</code>
+<code> </code>
+<code>         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();</code>
+<code>         StrictMode.setThreadPolicy(policy);</code>
+<code>         requestPermission();</code>
+<code> </code>
+<code>         FusedLocationProviderClient mFusedLocationClient;</code>
+<code>         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);</code>
+<code>         if (ActivityCompat.checkSelfPermission(MainActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {</code>
+<code>             return;</code>
+<code>         }</code>
+<code>         mFusedLocationClient.getLastLocation().addOnSuccessListener(MainActivity.this, new OnSuccessListener&lt;Location>() {</code>
+<code>             @Override</code>
+<code>             public void onSuccess(Location location) {</code>
+<code>                 if (location != null) {</code>
+<code>                     latitude = String.valueOf(location.getLatitude());</code>
+<code>                     longitude = String.valueOf(location.getLongitude());</code>
+<code> </code>
+<code>                     weatherFont = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");</code>
+<code> </code>
+<code>                     cityField = (TextView) findViewById(R.id.city_field);</code>
+<code>                     currentTemperatureField = (TextView) findViewById(R.id.current_temperature_field);</code>
+<code>                     updatedField = (TextView) findViewById(R.id.updated_field);</code>
+<code>                     detailsField = (TextView) findViewById(R.id.details_field);</code>
+<code> </code>
+<code>                     humidity_field = (TextView) findViewById(R.id.humidity_field);</code>
+<code>                     pressure_field = (TextView) findViewById(R.id.pressure_field);</code>
+<code>                     weatherIcon = (TextView) findViewById(R.id.weather_icon);</code>
+<code>                     weatherIcon.setTypeface(weatherFont);</code>
+<code> </code>
+<code> </code>
+<code>                     String[] jsonData = getJSONResponse();</code>
+<code> </code>
+<code>                     cityField.setText(jsonData[0]);</code>
+<code>                     detailsField.setText(jsonData[1]);</code>
+<code>                     currentTemperatureField.setText(jsonData[2]);</code>
+<code>                     humidity_field.setText("Humidity: " + jsonData[3]);</code>
+<code>                     pressure_field.setText("Pressure: " + jsonData[4]);</code>
+<code>                     updatedField.setText(jsonData[5]);</code>
+<code>                     weatherIcon.setText(Html.fromHtml(jsonData[6]));</code>
+<code> </code>
+<code>                 }</code>
+<code>             }</code>
+<code>         });</code>
+<code>     }</code>
+<code> </code>
+<code>     private void requestPermission() {</code>
+<code>         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);</code>
+<code>     }</code>
+<code> </code>
+<code>     public static String setWeatherIcon(int actualId, long sunrise, long sunset) {</code>
+<code>         int id = actualId / 100;</code>
+<code>         String icon = "";</code>
+<code>         if (actualId == 800) {</code>
+<code>             long currentTime = new Date().getTime();</code>
+<code>             if (currentTime >= sunrise &amp;&amp; currentTime &lt; sunset) {</code>
+<code>                 icon = "&amp;#xf00d;";</code>
+<code>             } else {</code>
+<code>                 icon = "&amp;#xf02e;";</code>
+<code>             }</code>
+<code>         } else {</code>
+<code>             switch (id) {</code>
+<code>                 case 2:</code>
+<code>                     icon = "&amp;#xf01e;";</code>
+<code>                     break;</code>
+<code>                 case 3:</code>
+<code>                     icon = "&amp;#xf01c;";</code>
+<code>                     break;</code>
+<code>                 case 7:</code>
+<code>                     icon = "&amp;#xf014;";</code>
+<code>                     break;</code>
+<code>                 case 8:</code>
+<code>                     icon = "&amp;#xf013;";</code>
+<code>                     break;</code>
+<code>                 case 6:</code>
+<code>                     icon = "&amp;#xf01b;";</code>
+<code>                     break;</code>
+<code>                 case 5:</code>
+<code>                     icon = "&amp;#xf019;";</code>
+<code>                     break;</code>
+<code>             }</code>
+<code>         }</code>
+<code>         return icon;</code>
+<code>     }</code>
+<code> </code>
+<code>     public String[] getJSONResponse() {</code>
+<code>         String[] jsonData = new String[7];</code>
+<code>         JSONObject jsonWeather = null;</code>
+<code>         try {</code>
+<code>             jsonWeather = getWeatherJSON(latitude, longitude);</code>
+<code>         } catch (Exception e) {</code>
+<code>             Log.d("Error", "Cannot process JSON results", e);</code>
+<code>         }</code>
+<code> </code>
+<code>         try {</code>
+<code>             if (jsonWeather != null) {</code>
+<code>                 JSONObject details = jsonWeather.getJSONArray("weather").getJSONObject(0);</code>
+<code>                 JSONObject main = jsonWeather.getJSONObject("main");</code>
+<code>                 DateFormat df = DateFormat.getDateTimeInstance();</code>
+<code> </code>
+<code>                 String city = jsonWeather.getString("name") + ", " + jsonWeather.getJSONObject("sys").getString("country");</code>
+<code>                 String description = details.getString("description").toUpperCase(Locale.US);</code>
+<code>                 String temperature = String.format("%.0f", main.getDouble("temp")) + "°";</code>
+<code>                 String humidity = main.getString("humidity") + "%";</code>
+<code>                 String pressure = main.getString("pressure") + " hPa";</code>
+<code>                 String updatedOn = df.format(new Date(jsonWeather.getLong("dt") * 1000));</code>
+<code>                 String iconText = setWeatherIcon(details.getInt("id"), jsonWeather.getJSONObject("sys").getLong("sunrise") * 1000,</code>
+<code>                         jsonWeather.getJSONObject("sys").getLong("sunset") * 1000);</code>
+<code> </code>
+<code>                 jsonData[0] = city;</code>
+<code>                 jsonData[1] = description;</code>
+<code>                 jsonData[2] = temperature;</code>
+<code>                 jsonData[3] = humidity;</code>
+<code>                 jsonData[4] = pressure;</code>
+<code>                 jsonData[5] = updatedOn;</code>
+<code>                 jsonData[6] = iconText;</code>
+<code> </code>
+<code>             }</code>
+<code>         } catch (JSONException e) {</code>
+<code>             //Log.e(LOG_TAG, "Cannot process JSON results", e);</code>
+<code>         }</code>
+<code>         return jsonData;</code>
+<code>     }</code>
+<code> </code>
+<code>     public static JSONObject getWeatherJSON(String lat, String lon) {</code>
+<code>         try {</code>
+<code>             URL url = new URL(String.format(OPEN_WEATHER_MAP_URL, lat, lon));</code>
+<code>             HttpURLConnection connection = (HttpURLConnection) url.openConnection();</code>
+<code>             connection.addRequestProperty("x-api-key", OPEN_WEATHER_MAP_API);</code>
+<code>             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));</code>
+<code>             StringBuffer json = new StringBuffer(1024);</code>
+<code>             String tmp = "";</code>
+<code>             while ((tmp = reader.readLine()) != null) {</code>
+<code>                 json.append(tmp).append("\n");</code>
+<code>             }</code>
+<code>             reader.close();</code>
+<code>             JSONObject data = new JSONObject(json.toString());</code>
+<code> </code>
+<code>             if (data.getInt("cod") != 200) {</code>
+<code>                 return null;</code>
+<code>             }</code>
+<code>             return data;</code>
+<code>         } catch (Exception e) {</code>
+<code>             return null;</code>
+<code>         }</code>
+<code>     }</code>
+<code> }</code>
+</pre>
+</div>
+<br>
+            <h2>Step 5:</h2><br>
+            <p>Goto <strong>build.gradle (Module: app)</strong> file and add location service dependency.
+				<div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> implementation 'com.google.android.gms:play-services-location:15.0.1'</code>
+</pre>
+</div>
+<br>
+                <img src="images/weather-app-gradle.png" alt="step1" width="100%" height="100%"/>
+                <br>
+        </div>
+		<h2>Step 6:</h2><br>
+            <p>Now add <a href="/assets/weathericons-regular-webfont.ttf" download><strong>weathericons-regular-webfont.ttf</strong></a> file under assets -> fonts -> weathericons-regular-webfont.ttf<br><br>
+                <img src="images/weather-app-font.png" alt="step1" width="100%" height="100%"/>
+                <br>
+        
+	<h2>Step 7:</h2><br>
+	<p>Now click on <b>Run</b> button.<br><br>
+                <img src="images/weather-app-run.jpg" alt="step1" width="100%" height="100%"/>
+                <br>
+
+        <br>
+        <h3>You can download the complete project from GitHub repository.<a href="https://github.com/rahulchauhan9292/Weather-App-Android-Studio"><br>
+            <img src="images/GitHub.png" width="32" height="32" alt=""/>Download</a></h3>
+    </div>
+			</div>
+</div>
+
+<div id="footer-wrapper">
+    <div id="footer" class="footer-align">
+        <div id="fbox2" style="text-align: center">
+            <header>Get In Touch</header>
+            <p>Follow us on GitHub, YouTube and Instagram to get latest technology trends and exciting How to
+                videos.</p>
+            <ul class="style3">
+                <li text><a href="https://github.com/rahulchauhan9292?tab=repositories"><img src="images/GitHub.png" width="32" height="32" alt=""/></a></li>
+                <li><a href="https://www.youtube.com/channel/UCGM0_UxVcCkPjNKho3eOThQ"><img src="images/YouTube.png" width="32" height="32" alt=""/></a></li>
+                <li><a href="https://www.instagram.com/"><img src="images/Instagram.png" width="32" height="32" alt=""/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="copyright" class="container">
+    <p>Copyright &copy; 2020 TechZone. All rights reserved.</p>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/>
+    <title>TechZone</title>
+    <script data-ad-client="ca-pub-4512141567746855" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700"
+          rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--[if IE 6]>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body onload="displayDate(), displayGreetingMessage()">
+<div id="header-wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="index.html"><img src="images/logo.png" width="64" height="64" alt=""/>TechZone</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html" accesskey="1" title="">Home</a></li>
+                <li class="active"><a href="tutorials-page.html" accesskey="2" title="">Tutorials</a></li>
+                <li><a href="about-us.html" accesskey="3" title="">About Us</a></li>
+                <li><a href="contact-us.html" accesskey="4" title="">Contact</a></li>
+                <li><a href="blogs.html" accesskey="4" title="">Blogs</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="page-wrapper">
+    <div id="page" class="container">
+        <div id="content">
+            <header style="text-align: center; font-weight: bold;">How to create Circular Progress Bar in Android
+                Studio
+            </header>
+            <div style="text-align: center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/qH5iCSC3BoE" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <h2>Step 1:</h2><br>
+            <p>Create a new Drawable file -> Right Click on <b>Drawable Folder</b> -> <b>New</b> -> <b>Drawable Resource
+                File</b><br>
+                File Name: <b>circle_progress_bar</b><br>
+                Root Element: <b>rotate</b>
+                <img src="images/step1.png" alt="step1" width="100%" height="100%"/>
+                <br><br>
+            <p> Copy and paste below code </p>
+            <b><i><h3>File : circle_progress_bar.xml</h3></i></b></p>
+
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;rotate xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     android:fromDegrees="270"</code>
+<code>     android:toDegrees="270"></code>
+<code>     &lt;shape</code>
+<code>         android:innerRadiusRatio="2.5"</code>
+<code>         android:shape="ring"</code>
+<code>         android:thickness="8dp"</code>
+<code>         android:useLevel="true"></code>
+<code> </code>
+<code>     &lt;gradient</code>
+<code>         android:angle="0"</code>
+<code>         android:endColor="#009688"</code>
+<code>         android:startColor="#009688"</code>
+<code>         android:type="sweep"</code>
+<code>         android:useLevel="false"/></code>
+<code> </code>
+<code>     &lt;/shape></code>
+<code> &lt;/rotate></code>
+</pre>
+            </div>
+            <br>
+
+            <h2>Step 2:</h2><br>
+            <p>Create a new Drawable file -> Right Click on <b>Drawable Folder</b> -> <b>New</b> -> <b>Drawable Resource
+                File</b><br>
+                File Name: <b>circle_shape</b><br>
+                Root Element: <b>shape</b>
+                <br>
+                Copy and paste below code to create a circular shape.
+                <b><i><h3>File : circle_shape.xml</h3></i></b></p>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;shape xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     android:shape="ring"</code>
+<code>     android:innerRadiusRatio="2.5"</code>
+<code>     android:thickness="3dp"</code>
+<code>     android:useLevel="false"></code>
+<code>     &lt;solid android:color="#009688"/></code>
+<code> &lt;/shape></code>
+</pre>
+            </div>
+            <br>
+            <h2>Step 3:</h2><br>
+            <p>Go to <b>activity_main.xml</b> and copy and paste the below code.
+                <br>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     xmlns:tools="http://schemas.android.com/tools"</code>
+<code>     android:layout_width="match_parent"</code>
+<code>     android:layout_height="match_parent"</code>
+<code>     android:background="#2F3943"</code>
+<code>     android:gravity="center_horizontal"</code>
+<code>     android:orientation="vertical"</code>
+<code>     tools:context=".MainActivity"></code>
+<code> </code>
+<code>     &lt;RelativeLayout</code>
+<code>         android:id="@+id/progress_layout"</code>
+<code>         android:layout_width="200dp"</code>
+<code>         android:layout_height="200dp"</code>
+<code>         android:layout_marginTop="100dp"></code>
+<code> </code>
+<code>         &lt;ProgressBar</code>
+<code>             android:id="@+id/progress_bar"</code>
+<code>             style="?android:attr/progressBarStyleHorizontal"</code>
+<code>             android:layout_width="match_parent"</code>
+<code>             android:layout_height="match_parent"</code>
+<code>             android:background="@drawable/circle_shape"</code>
+<code>             android:indeterminate="false"</code>
+<code>             android:progressDrawable="@drawable/circle_progress_bar"</code>
+<code>             android:textAlignment="center" /></code>
+<code> </code>
+<code>         &lt;TextView</code>
+<code>             android:id="@+id/progress_text"</code>
+<code>             android:layout_width="wrap_content"</code>
+<code>             android:layout_height="wrap_content"</code>
+<code>             android:layout_alignParentLeft="true"</code>
+<code>             android:layout_alignParentRight="true"</code>
+<code>             android:layout_centerVertical="true"</code>
+<code>             android:gravity="center"</code>
+<code>             android:text="---"</code>
+<code>             android:textColor="#FFFFFF"</code>
+<code>             android:textSize="28sp"</code>
+<code>             android:textStyle="bold" /></code>
+<code> </code>
+<code>     &lt;/RelativeLayout></code>
+<code> &lt;/LinearLayout></code>
+</pre>
+            </div>
+            <br>
+            <h2>Step 4:</h2><br>
+            <p>Now go to <b>MainActivity.java</b> and paste below code for making progress bar work.<br>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> package com.rahul.chauhan.roundprogressbar;</code>
+<code> </code>
+<code> import androidx.appcompat.app.AppCompatActivity;</code>
+<code> import android.os.Bundle;</code>
+<code> import android.os.Handler;</code>
+<code> import android.widget.ProgressBar;</code>
+<code> import android.widget.TextView;</code>
+<code> </code>
+<code> public class MainActivity extends AppCompatActivity {</code>
+<code> </code>
+<code>     private ProgressBar progressBar;</code>
+<code>     private TextView progressText;</code>
+<code>     int i = 0;</code>
+<code> </code>
+<code>     @Override</code>
+<code>     protected void onCreate(Bundle savedInstanceState) {</code>
+<code>         super.onCreate(savedInstanceState);</code>
+<code>         setContentView(R.layout.activity_main);</code>
+<code> </code>
+<code>         progressBar = findViewById(R.id.progress_bar);</code>
+<code>         progressText = findViewById(R.id.progress_text);</code>
+<code> </code>
+<code>         final Handler handler = new Handler();</code>
+<code>         handler.postDelayed(new Runnable() {</code>
+<code>             @Override</code>
+<code>             public void run() {</code>
+<code>                 if (i &lt;= 100) {</code>
+<code>                     progressText.setText("" + i);</code>
+<code>                     progressBar.setProgress(i);</code>
+<code>                     i++;</code>
+<code>                     handler.postDelayed(this, 200);</code>
+<code>                 } else {</code>
+<code>                     handler.removeCallbacks(this);</code>
+<code>                 }</code>
+<code>             }</code>
+<code>         }, 200);</code>
+<code>     }</code>
+<code> }</code>
+</pre>
+            </div>
+            <h2>Step 5:</h2><br>
+            <p>Now click on <b>Run</b> button.<br><br>
+                <img src="images/final.png" alt="step1" width="100%" height="100%"/>
+                <br>
+        </div>
+        <br>
+        <h3>You can download the complete project from GitHub repository.<a href="https://github.com/rahulchauhan9292/Round-Progress-Bar-Android-Studio"><br>
+            <img src="images/GitHub.png" width="32" height="32" alt=""/>Download</a></h3>
+    </div>
+</div>
+
+<div id="footer-wrapper">
+    <div id="footer" class="footer-align">
+        <div id="fbox2" style="text-align: center">
+            <header>Get In Touch</header>
+            <p>Follow us on GitHub, YouTube and Instagram to get latest technology trends and exciting How to
+                videos.</p>
+            <ul class="style3">
+                <li text><a href="https://github.com/rahulchauhan9292?tab=repositories"><img src="images/GitHub.png" width="32" height="32" alt=""/></a></li>
+                <li><a href="https://www.youtube.com/channel/UCGM0_UxVcCkPjNKho3eOThQ"><img src="images/YouTube.png" width="32" height="32" alt=""/></a></li>
+                <li><a href="https://www.instagram.com/"><img src="images/Instagram.png" width="32" height="32" alt=""/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="copyright" class="container">
+    <p>Copyright &copy; 2020 TechZone. All rights reserved.</p>
+</div>
+</body>
+</html>
