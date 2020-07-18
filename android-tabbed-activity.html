@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/>
+    <title>TechZone</title>
+    <script data-ad-client="ca-pub-4512141567746855" async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700"
+          rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--[if IE 6]>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <script type="text/javascript" src="common.js"></script>
+</head>
+<body onload="displayDate(), displayGreetingMessage()">
+<div id="header-wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1><a href="index.html"><img src="images/logo.png" width="64" height="64" alt=""/>TechZone</a></h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html" accesskey="1" title="">Home</a></li>
+                <li class="active"><a href="tutorials-page.html" accesskey="2" title="">Tutorials</a></li>
+                <li><a href="about-us.html" accesskey="3" title="">About Us</a></li>
+                <li><a href="contact-us.html" accesskey="4" title="">Contact</a></li>
+                <li><a href="blogs.html" accesskey="4" title="">Blogs</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="page-wrapper">
+    <div id="page" class="container">
+        <div id="content">
+            <header style="text-align: center; font-weight: bold;">How to create Tabs in Android Studio with Tabbed
+                Activity
+            </header>
+            <div style="text-align: center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ediklbippkA" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <br>
+            <h2>Step 1:</h2><br>
+            <p>Open Android Studio. Create new Project. <b>Select Tabbed Activity</b> from Project Template.</p>
+            <h2>Step 2:</h2><br>
+            <p>Now create three JAVA classes namely TabOne.java, TabTwo.java and TabThree.java. After creating the
+                classes extend them with Fragment class as shown below<br>
+
+                <br/>
+                File Name: <b>TabOne.java</b><br>
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> package com.rahul.chauhan.tabbedactivity;</code>
+<code> </code>
+<code> import android.os.Bundle;</code>
+<code> import android.view.LayoutInflater;</code>
+<code> import android.view.View;</code>
+<code> import android.view.ViewGroup;</code>
+<code> </code>
+<code> import androidx.annotation.NonNull;</code>
+<code> import androidx.annotation.Nullable;</code>
+<code> import androidx.fragment.app.Fragment;</code>
+<code> </code>
+<code> public class TabOne extends Fragment {</code>
+<code> </code>
+<code>     @Nullable</code>
+<code>     @Override</code>
+<code>     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {</code>
+<code>         View view = inflater.inflate(R.layout.tab_one, container, false);</code>
+<code>         return view;</code>
+<code>     }</code>
+<code> }</code>
+</pre>
+            </div>
+            <br>
+
+            <br/>
+            File Name: <b>TabTwo.java</b><br>
+
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> package com.rahul.chauhan.tabbedactivity;</code>
+<code> </code>
+<code> import android.os.Bundle;</code>
+<code> import android.view.LayoutInflater;</code>
+<code> import android.view.View;</code>
+<code> import android.view.ViewGroup;</code>
+<code> </code>
+<code> import androidx.annotation.NonNull;</code>
+<code> import androidx.annotation.Nullable;</code>
+<code> import androidx.fragment.app.Fragment;</code>
+<code> </code>
+<code> public class TabTwo extends Fragment {</code>
+<code> </code>
+<code>     @Nullable</code>
+<code>     @Override</code>
+<code>     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {</code>
+<code>         View view = inflater.inflate(R.layout.tab_two, container, false);</code>
+<code>         return view;</code>
+<code>     }</code>
+<code> }</code>
+</pre>
+            </div>
+            <br>
+
+            <br/>
+            File Name: <b>TabThree.java</b><br>
+
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> package com.rahul.chauhan.tabbedactivity;</code>
+<code> </code>
+<code> import android.os.Bundle;</code>
+<code> import android.view.LayoutInflater;</code>
+<code> import android.view.View;</code>
+<code> import android.view.ViewGroup;</code>
+<code> </code>
+<code> import androidx.annotation.NonNull;</code>
+<code> import androidx.annotation.Nullable;</code>
+<code> import androidx.fragment.app.Fragment;</code>
+<code> </code>
+<code> public class TabThree extends Fragment {</code>
+<code> </code>
+<code>     @Nullable</code>
+<code>     @Override</code>
+<code>     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {</code>
+<code>         View view = inflater.inflate(R.layout.tab_three, container, false);</code>
+<code>         return view;</code>
+<code>     }</code>
+<code> }</code>
+</pre>
+            </div>
+            <br>
+            <br>
+            <h2>Step 3:</h2><br>
+            <p>Now create 3 xml layout files for displaying tabs activity.</p>
+                File Name: <b>tab_one.xml</b><br>
+                File Name: <b>tab_two.xml</b><br>
+                File Name: <b>tab_three.xml</b><br>
+
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> &lt;?xml version="1.0" encoding="utf-8"?></code>
+<code> &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"</code>
+<code>     android:layout_width="match_parent"</code>
+<code>     android:layout_height="match_parent"></code>
+<code> </code>
+<code> &lt;/LinearLayout></code>
+</pre>
+            </div>
+            <br>
+            <h2>Step 4:</h2><br>
+            <p>Now goto to <b>MainActivity.java</b> file and write the below code in <b>getItem(int position)</b> method.
+
+            <div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code> public Fragment getItem(int position) {</code>
+<code>             switch (position) {</code>
+<code>                 case 0:</code>
+<code>                     TabOne tabOne = new TabOne();</code>
+<code>                     return tabOne;</code>
+<code>                 case 1:</code>
+<code>                     TabTwo tabTwo = new TabTwo();</code>
+<code>                     return tabTwo;</code>
+<code>                 case 2:</code>
+<code>                     TabThree tabThree = new TabThree();</code>
+<code>                     return tabThree;</code>
+<code>                 default:</code>
+<code>                     return null;</code>
+<code>             }</code>
+<code>         }</code>
+</pre>
+            </div>
+            <br>
+                <br>
+                <img src="images/android-tab-activity.png" alt="step1" width="100%" height="100%"/>
+                <br>
+
+        </div>
+        <br>
+    </div>
+</div>
+
+<div id="footer-wrapper">
+    <div id="footer" class="footer-align">
+        <div id="fbox2" style="text-align: center">
+            <header>Get In Touch</header>
+            <p>Follow us on GitHub, YouTube and Instagram to get latest technology trends and exciting How to
+                videos.</p>
+            <ul class="style3">
+                <li text><a href="https://github.com/rahulchauhan9292?tab=repositories"><img src="images/GitHub.png"
+                                                                                             width="32" height="32"
+                                                                                             alt=""/></a></li>
+                <li><a href="https://www.youtube.com/channel/UCGM0_UxVcCkPjNKho3eOThQ"><img src="images/YouTube.png"
+                                                                                            width="32" height="32"
+                                                                                            alt=""/></a></li>
+                <li><a href="https://www.instagram.com/"><img src="images/Instagram.png" width="32" height="32" alt=""/></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="copyright" class="container">
+    <p>Copyright &copy; 2020 TechZone. All rights reserved.</p>
+</div>
+</body>
+</html>

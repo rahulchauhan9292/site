@@ -36,31 +36,59 @@
 <div id="page-wrapper">
     <div id="page" class="container">
         <div id="content">
-            <header style="text-align: center; font-weight: bold;">How to add background image in Android Studio
+            <header style="text-align: center; font-weight: bold;">How to open webpage in Android Studio (WebView Example)
             </header>
             <div style="text-align: center">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ezpOmH50Xdg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/N2WFtXm64Rs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <h2>Step 1:</h2><br>
             <p>Open Android Studio and create a new project.</p>
             <h2>Step 2:</h2><br>
-            <p>After the project is loaded, add an image in the <b>Drawable</b> folder.<br><br>
-                <img src="images/bg-image-drawable.png" alt="step1" width="100%" height="100%"/>
-                <br>
+            <p>After the project is loaded, open <b>AndroidManifest.xml</b> file and add below permission to access the internet.<br>
+
+<div style="background-color: #283142; color: #FFFFFF">
+<pre class="code">
+<code></code>
+<code> &lt;uses-permission android:name="android.permission.INTERNET"/></code>
+<code></code>
+</pre>
+</div>
+<br>
+                <img src="images/webview-img1.png" alt="step1" width="100%" height="100%"/>
+            <br><br>
             <h2>Step 3:</h2><br>
-            <p>Now open your layout file which is present in this path <b>res -> layout -> activity_main.xml</b> file<br>
-            <h2>Step 4:</h2><br>
-            <p>Now add below code line in your starting layout declaration.
+            <p>Now open <b>MainActivity.java</b> file and add below code.
+
             <div style="background-color: #283142; color: #FFFFFF">
 <pre class="code">
+<code> package com.rahul.chauhan.webviewexample;</code>
 <code> </code>
-<code> android:background="@drawable/image_name</code>
+<code> import androidx.appcompat.app.AppCompatActivity;</code>
 <code> </code>
+<code> import android.os.Bundle;</code>
+<code> import android.webkit.WebView;</code>
+<code> </code>
+<code> public class MainActivity extends AppCompatActivity {</code>
+<code> </code>
+<code>     @Override</code>
+<code>     protected void onCreate(Bundle savedInstanceState) {</code>
+<code>         super.onCreate(savedInstanceState);</code>
+<code>         setContentView(R.layout.activity_main);</code>
+<code> </code>
+<code>         WebView webView = new WebView(this);</code>
+<code>         setContentView(webView);</code>
+<code>         webView.loadUrl("https://www.google.com/");</code>
+<code>     }</code>
+<code> }</code>
 </pre>
             </div>
-
-            <br><br>
-            <img src="images/bg-image-code.png" alt="step1" width="100%" height="100%"/>
+            <br>
+            <img src="images/webview-img2.png" alt="step1" width="100%" height="100%"/>
+            <br><br><br>
+            <h2>Step 4:</h2><br>
+            <p>Now run the application. Thats all folks !!<br>
+            <br>
+            <img src="images/webview-img3.png" alt="step1" width="100%" height="100%"/>
             <br>
 
         </div>
